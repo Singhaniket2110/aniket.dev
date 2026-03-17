@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aniket Singh | Full Stack Developer</title>
+<meta name="description" content="Full Stack Developer specializing in Python, MERN Stack, PHP & BSc IT Projects">
+<meta name="keywords" content="Python Developer, MERN Developer, BSc IT Projects, Freelance Developer Mumbai">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #060a12;
+  --bg2: #0c1220;
+  --accent: #00e5ff;
+  --accent2: #7c3aed;
+  --accent3: #f59e0b;
+  --text: #e2e8f0;
+  --muted: #64748b;
+  --card: rgba(255,255,255,0.04);
+  --border: rgba(255,255,255,0.08);
+  --glow: rgba(0,229,255,0.15);
+}
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;overflow-x:hidden;}
+::selection{background:var(--accent);color:#000;}
+
+/* NOISE OVERLAY */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:1000;opacity:0.4;
+}
+
+/* CANVAS */
+#particles{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;}
+
+/* NAV */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  padding:20px 60px;
+  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(6,10,18,0.7);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  transition:.3s;
+}
+.logo{
+  font-size:20px;font-weight:800;letter-spacing:-0.5px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+nav ul{display:flex;gap:35px;list-style:none;}
+nav a{
+  color:var(--muted);text-decoration:none;font-size:13px;
+  letter-spacing:1.5px;text-transform:uppercase;font-weight:600;
+  transition:.3s;position:relative;
+}
+nav a::after{
+  content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;
+  background:var(--accent);transition:.3s;
+}
+nav a:hover{color:var(--accent);}
+nav a:hover::after{width:100%;}
+
+.nav-cta{
+  padding:9px 22px;
+  background:transparent;border:1px solid var(--accent);
+  color:var(--accent)!important;border-radius:4px;
+  transition:.3s!important;
+}
+.nav-cta:hover{background:var(--accent)!important;color:#000!important;}
+.nav-cta::after{display:none!important;}
+
+/* HERO */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  justify-content:center;align-items:flex-start;
+  padding:120px 60px 80px;
+  position:relative;z-index:10;
+  max-width:1200px;margin:0 auto;
+}
+.hero-tag{
+  font-family:'Space Mono',monospace;
+  font-size:12px;letter-spacing:3px;color:var(--accent);
+  text-transform:uppercase;margin-bottom:24px;
+  display:flex;align-items:center;gap:10px;
+}
+.hero-tag::before{content:'';width:40px;height:1px;background:var(--accent);}
+.hero h1{
+  font-size:clamp(52px,8vw,100px);
+  font-weight:800;line-height:1;
+  letter-spacing:-3px;
+  margin-bottom:20px;
+}
+.hero h1 .name-line{
+  display:block;
+  background:linear-gradient(135deg, #fff 0%, #a0aec0 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero h1 .accent-line{
+  display:block;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.typing-wrap{
+  font-family:'Space Mono',monospace;
+  font-size:18px;color:var(--muted);
+  margin-bottom:40px;height:28px;
+  display:flex;align-items:center;gap:8px;
+}
+.typing-cursor{
+  display:inline-block;width:2px;height:22px;
+  background:var(--accent);animation:blink .7s step-end infinite;
+}
+@keyframes blink{50%{opacity:0;}}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+.btn-primary{
+  padding:14px 32px;background:var(--accent);
+  color:#000;font-family:'Syne',sans-serif;font-weight:700;
+  font-size:14px;letter-spacing:1px;text-transform:uppercase;
+  border:none;border-radius:4px;cursor:pointer;
+  text-decoration:none;display:inline-block;
+  transition:.3s;position:relative;overflow:hidden;
+}
+.btn-primary::after{
+  content:'';position:absolute;inset:0;
+  background:rgba(255,255,255,0.15);transform:translateX(-100%);
+  transition:.3s;
+}
+.btn-primary:hover::after{transform:translateX(0);}
+.btn-secondary{
+  padding:14px 32px;background:transparent;
+  color:var(--text);font-family:'Syne',sans-serif;font-weight:700;
+  font-size:14px;letter-spacing:1px;text-transform:uppercase;
+  border:1px solid var(--border);border-radius:4px;cursor:pointer;
+  text-decoration:none;display:inline-block;transition:.3s;
+}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent);}
+
+/* SCROLL INDICATOR */
+.scroll-line{
+  position:absolute;bottom:40px;left:60px;
+  display:flex;align-items:center;gap:12px;
+  font-family:'Space Mono',monospace;font-size:11px;
+  letter-spacing:3px;color:var(--muted);text-transform:uppercase;
+}
+.scroll-line::before{
+  content:'';width:1px;height:50px;background:var(--muted);
+  animation:scrollPulse 2s ease infinite;
+}
+@keyframes scrollPulse{
+  0%,100%{opacity:.3;transform:scaleY(1);}
+  50%{opacity:1;transform:scaleY(1.2);}
+}
+
+/* SECTIONS */
+section{
+  padding:100px 60px;
+  max-width:1200px;margin:0 auto;
+  position:relative;z-index:10;
+}
+.section-label{
+  font-family:'Space Mono',monospace;
+  font-size:11px;letter-spacing:4px;color:var(--accent);
+  text-transform:uppercase;margin-bottom:16px;
+  display:flex;align-items:center;gap:12px;
+}
+.section-label::after{content:'';flex:0 0 40px;height:1px;background:var(--accent);}
+h2{font-size:clamp(36px,4vw,52px);font-weight:800;letter-spacing:-1.5px;margin-bottom:60px;}
+
+/* STATS */
+.stats-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:2px;
+  border:1px solid var(--border);border-radius:12px;overflow:hidden;
+  margin-bottom:80px;
+}
+.stat{
+  padding:40px 32px;background:var(--card);
+  border-right:1px solid var(--border);
+  transition:.3s;position:relative;overflow:hidden;
+}
+.stat:last-child{border-right:none;}
+.stat::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--glow),transparent);
+  opacity:0;transition:.3s;
+}
+.stat:hover::before{opacity:1;}
+.stat-num{
+  font-size:52px;font-weight:800;letter-spacing:-2px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  line-height:1;margin-bottom:8px;
+}
+.stat-label{font-size:13px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.about-text p{font-size:18px;color:var(--muted);line-height:1.8;margin-bottom:20px;}
+.about-text p strong{color:var(--text);}
+.about-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px;}
+.tag{
+  padding:6px 16px;border:1px solid var(--border);
+  border-radius:100px;font-size:12px;color:var(--muted);
+  letter-spacing:1px;text-transform:uppercase;
+  transition:.3s;
+}
+.tag:hover{border-color:var(--accent);color:var(--accent);}
+.about-visual{
+  background:var(--card);border:1px solid var(--border);border-radius:16px;
+  padding:40px;position:relative;overflow:hidden;
+}
+.about-visual::before{
+  content:'';position:absolute;top:-50%;right:-50%;
+  width:200px;height:200px;border-radius:50%;
+  background:var(--glow);filter:blur(60px);
+}
+.code-block{
+  font-family:'Space Mono',monospace;font-size:13px;
+  color:var(--muted);line-height:2;
+}
+.code-block .k{color:var(--accent2);}
+.code-block .s{color:var(--accent3);}
+.code-block .v{color:var(--accent);}
+
+/* SKILLS */
+.skills-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));
+  gap:12px;
+}
+.skill-item{
+  padding:20px 16px;background:var(--card);
+  border:1px solid var(--border);border-radius:10px;
+  text-align:center;font-size:13px;font-weight:600;
+  letter-spacing:.5px;transition:.3s;cursor:default;
+  position:relative;overflow:hidden;
+}
+.skill-item::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(0,229,255,.08),transparent);
+  opacity:0;transition:.3s;
+}
+.skill-item:hover{
+  border-color:var(--accent);color:var(--accent);
+  transform:translateY(-4px);
+  box-shadow:0 20px 40px rgba(0,229,255,.1);
+}
+.skill-item:hover::before{opacity:1;}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px;}
+.project-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;overflow:hidden;transition:.4s;
+  position:relative;
+}
+.project-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  transform:scaleX(0);transform-origin:left;transition:.4s;
+}
+.project-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 30px 60px rgba(0,0,0,.5),0 0 0 1px rgba(0,229,255,.1);
+}
+.project-card:hover::before{transform:scaleX(1);}
+.project-img{
+  width:100%;height:200px;
+  background:linear-gradient(135deg,var(--bg2),#0f1929);
+  display:flex;align-items:center;justify-content:center;
+  font-size:60px;position:relative;overflow:hidden;
+}
+.project-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 60%,var(--card));
+}
+.project-body{padding:28px;}
+.project-stack{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
+.stack-tag{
+  padding:3px 10px;background:rgba(0,229,255,.08);
+  border:1px solid rgba(0,229,255,.2);border-radius:4px;
+  font-size:11px;color:var(--accent);
+  font-family:'Space Mono',monospace;letter-spacing:.5px;
+}
+.project-body h3{font-size:22px;font-weight:700;margin-bottom:12px;letter-spacing:-.5px;}
+.project-body p{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:20px;}
+.project-links{display:flex;gap:12px;}
+.proj-link{
+  padding:8px 18px;border:1px solid var(--border);border-radius:6px;
+  font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:.3s;
+}
+.proj-link:hover{border-color:var(--accent);color:var(--accent);}
+.proj-link.primary{
+  background:var(--accent);color:#000;border-color:var(--accent);
+}
+.proj-link.primary:hover{background:transparent;color:var(--accent);}
+
+/* BSCIT */
+.bscit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;}
+.bscit-card{
+  padding:32px 24px;background:var(--card);
+  border:1px solid var(--border);border-radius:12px;
+  text-align:center;transition:.3s;
+}
+.bscit-card:hover{border-color:var(--accent2);transform:translateY(-4px);}
+.bscit-icon{font-size:36px;margin-bottom:16px;}
+.bscit-card h3{font-size:16px;font-weight:700;margin-bottom:8px;}
+.bscit-card p{font-size:12px;color:var(--muted);line-height:1.6;}
+
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.price-card{
+  padding:40px 32px;background:var(--card);
+  border:1px solid var(--border);border-radius:16px;
+  text-align:center;transition:.4s;position:relative;overflow:hidden;
+}
+.price-card.featured{
+  border-color:var(--accent);
+  background:linear-gradient(135deg,rgba(0,229,255,.05),rgba(124,58,237,.05));
+}
+.price-card.featured::before{
+  content:'POPULAR';
+  position:absolute;top:20px;right:-28px;
+  padding:4px 40px;background:var(--accent);
+  color:#000;font-size:10px;font-weight:800;letter-spacing:2px;
+  transform:rotate(45deg);
+}
+.price-card:hover{transform:translateY(-8px);}
+.price-type{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.price-amount{font-size:42px;font-weight:800;letter-spacing:-2px;margin-bottom:8px;}
+.price-range{font-size:13px;color:var(--muted);margin-bottom:32px;}
+.price-features{list-style:none;text-align:left;margin-bottom:32px;}
+.price-features li{
+  padding:10px 0;border-bottom:1px solid var(--border);
+  font-size:14px;color:var(--muted);display:flex;align-items:center;gap:10px;
+}
+.price-features li::before{content:'→';color:var(--accent);}
+
+/* TESTIMONIALS */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;}
+.testi-card{
+  padding:32px;background:var(--card);
+  border:1px solid var(--border);border-radius:16px;
+}
+.testi-quote{font-size:40px;color:var(--accent);line-height:1;margin-bottom:12px;}
+.testi-text{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:24px;font-style:italic;}
+.testi-author{font-size:13px;font-weight:700;color:var(--text);}
+.testi-role{font-size:12px;color:var(--muted);}
+
+/* BLOG */
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;}
+.blog-card{
+  padding:32px;background:var(--card);border:1px solid var(--border);
+  border-radius:16px;transition:.3s;cursor:pointer;
+}
+.blog-card:hover{border-color:var(--accent3);transform:translateY(-4px);}
+.blog-tag{
+  display:inline-block;padding:4px 12px;margin-bottom:16px;
+  background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.3);
+  border-radius:4px;font-size:11px;color:var(--accent3);
+  font-family:'Space Mono',monospace;letter-spacing:1px;
+}
+.blog-card h3{font-size:18px;font-weight:700;margin-bottom:12px;line-height:1.3;}
+.blog-card p{font-size:13px;color:var(--muted);line-height:1.7;}
+.blog-read{
+  display:inline-flex;align-items:center;gap:6px;
+  margin-top:20px;font-size:12px;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;color:var(--accent);
+}
+
+/* CONTACT */
+.contact-wrap{display:grid;grid-template-columns:1fr 1.5fr;gap:60px;align-items:start;}
+.contact-info h3{font-size:28px;font-weight:800;margin-bottom:16px;}
+.contact-info p{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:40px;}
+.contact-links{display:flex;flex-direction:column;gap:16px;}
+.contact-link{
+  display:flex;align-items:center;gap:16px;
+  padding:20px;background:var(--card);border:1px solid var(--border);
+  border-radius:12px;text-decoration:none;color:var(--text);
+  transition:.3s;
+}
+.contact-link:hover{border-color:var(--accent);color:var(--accent);}
+.contact-link-icon{
+  width:44px;height:44px;background:rgba(0,229,255,.1);
+  border-radius:10px;display:flex;align-items:center;justify-content:center;
+  font-size:20px;flex-shrink:0;
+}
+.contact-link-text small{display:block;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px;}
+.contact-link-text strong{font-size:14px;}
+
+/* FORM */
+.form-group{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+.form-group label{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+.form-group input,
+.form-group textarea,
+.form-group select{
+  padding:14px 18px;background:var(--card);
+  border:1px solid var(--border);border-radius:10px;
+  color:var(--text);font-family:'Syne',sans-serif;font-size:15px;
+  outline:none;transition:.3s;
+  -webkit-appearance:none;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{border-color:var(--accent);}
+.form-group textarea{height:130px;resize:vertical;}
+.form-group select{background-color:var(--bg2);color:var(--text);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+
+/* FOOTER */
+footer{
+  border-top:1px solid var(--border);
+  padding:40px 60px;
+  display:flex;justify-content:space-between;align-items:center;
+  position:relative;z-index:10;
+}
+.footer-brand{
+  font-size:20px;font-weight:800;letter-spacing:-0.5px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+footer p{font-size:13px;color:var(--muted);}
+
+/* WHATSAPP */
+.whatsapp{
+  position:fixed;bottom:30px;right:30px;
+  width:56px;height:56px;border-radius:16px;
+  background:#25D366;display:flex;align-items:center;justify-content:center;
+  text-decoration:none;z-index:999;
+  box-shadow:0 8px 32px rgba(37,211,102,.4);
+  transition:.3s;font-size:26px;
+}
+.whatsapp:hover{transform:scale(1.1) rotate(-5deg);}
+
+/* DIVIDER */
+.divider{
+  width:100%;height:1px;
+  background:linear-gradient(90deg,transparent,var(--border),transparent);
+  margin:0 auto;
+}
+
+/* ANIMATIONS */
+.fade-up{
+  opacity:0;transform:translateY(40px);
+  transition:opacity .7s ease,transform .7s ease;
+}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+
+/* GLOW BG SHAPES */
+.glow-shape{
+  position:absolute;border-radius:50%;
+  filter:blur(120px);pointer-events:none;z-index:1;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  header{padding:16px 24px;}
+  nav ul{display:none;}
+  section{padding:60px 24px;}
+  .hero{padding:120px 24px 60px;}
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+  .about-grid{grid-template-columns:1fr;}
+  .pricing-grid{grid-template-columns:1fr;}
+  .contact-wrap{grid-template-columns:1fr;}
+  footer{flex-direction:column;gap:12px;padding:30px 24px;text-align:center;}
+  .form-row{grid-template-columns:1fr;}
+  .scroll-line{display:none;}
+}
+
+/* HAMBURGER */
+.hamburger{
+  display:none;background:none;border:none;cursor:pointer;
+  flex-direction:column;gap:5px;
+}
+.hamburger span{display:block;width:24px;height:2px;background:var(--text);}
+@media(max-width:900px){
+  .hamburger{display:flex;}
+  nav.open ul{
+    display:flex;flex-direction:column;
+    position:fixed;top:70px;left:0;right:0;
+    background:rgba(6,10,18,.98);backdrop-filter:blur(20px);
+    padding:24px;border-bottom:1px solid var(--border);gap:20px;
+    z-index:899;
+  }
+}
+</style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<!-- GLOW SHAPES -->
+<div class="glow-shape" style="width:600px;height:600px;background:rgba(0,229,255,.04);top:-100px;right:-200px;"></div>
+<div class="glow-shape" style="width:400px;height:400px;background:rgba(124,58,237,.06);top:40%;left:-150px;"></div>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">aniket.dev</div>
+  <nav id="main-nav">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#academic">BSc IT</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="resume.pdf" download class="nav-cta">Resume ↓</a></li>
+    </ul>
+  </nav>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- HERO -->
+<section class="hero" style="max-width:100%;padding-left:60px;padding-right:60px;">
+  <div class="hero-tag">Available for freelance work</div>
+  <h1>
+    <span class="name-line">Aniket</span>
+    <span class="accent-line">Singh</span>
+  </h1>
+  <div class="typing-wrap">
+    <span id="typing-text"></span><span class="typing-cursor"></span>
+  </div>
+  <div class="hero-btns">
+    <a href="#projects" class="btn-primary">View Projects</a>
+    <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="btn-secondary">WhatsApp Me →</a>
+  </div>
+  <div class="scroll-line">Scroll</div>
+</section>
+
+<!-- STATS -->
+<div style="padding:0 60px;max-width:1200px;margin:0 auto;position:relative;z-index:10;">
+  <div class="stats-grid fade-up">
+    <div class="stat">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Projects Built</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">7+</div>
+      <div class="stat-label">Technologies</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">5+</div>
+      <div class="stat-label">Academic Projects</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3+</div>
+      <div class="stat-label">Web Apps</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider" style="max-width:1200px;margin:60px auto;"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About</div>
+  <h2>Who I Am</h2>
+  <div class="about-grid">
+    <div class="about-text fade-up">
+      <p>I'm a <strong>BSc IT student and freelance Full Stack Developer</strong> based in Mumbai, building high-quality web applications for clients across India.</p>
+      <p>I specialize in <strong>Python, MERN Stack, PHP</strong> and SQL — from simple landing pages to full-scale web applications. I also assist final-year BSc IT students with their <strong>project documentation and development</strong>.</p>
+      <p>Fast delivery, clean code, and real results — that's what I deliver every time.</p>
+      <div class="about-tags">
+        <span class="tag">BSc IT</span>
+        <span class="tag">Mumbai</span>
+        <span class="tag">Freelance</span>
+        <span class="tag">Full Stack</span>
+        <span class="tag">Open to Work</span>
+      </div>
+    </div>
+    <div class="about-visual fade-up">
+      <div class="code-block">
+        <span class="k">const</span> developer = {<br>
+        &nbsp;&nbsp;name: <span class="s">"Aniket Singh"</span>,<br>
+        &nbsp;&nbsp;role: <span class="s">"Full Stack Dev"</span>,<br>
+        &nbsp;&nbsp;location: <span class="s">"Mumbai, IN"</span>,<br>
+        &nbsp;&nbsp;stack: [<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="s">"Python"</span>, <span class="s">"MERN"</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="s">"PHP"</span>, <span class="s">"SQL"</span><br>
+        &nbsp;&nbsp;],<br>
+        &nbsp;&nbsp;available: <span class="v">true</span>,<br>
+        &nbsp;&nbsp;freelance: <span class="v">true</span><br>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider" style="max-width:1200px;margin:0 auto;"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Skills</div>
+  <h2>Technical Stack</h2>
+  <div class="skills-grid fade-up">
+    <div class="skill-item">C</div>
+    <div class="skill-item">C++</div>
+    <div class="skill-item">C#</div>
+    <div class="skill-item">Python</div>
+    <div class="skill-item">PHP</div>
+    <div class="skill-item">JavaScript</div>
+    <div class="skill-item">React</div>
+    <div class="skill-item">Node.js</div>
+    <div class="skill-item">Express</div>
+    <div class="skill-item">MongoDB</div>
+    <div class="skill-item">MySQL</div>
+    <div class="skill-item">HTML5</div>
+    <div class="skill-item">CSS3</div>
+    <div class="skill-item">Bootstrap</div>
+    <div class="skill-item">Supabase</div>
+    <div class="skill-item">Git</div>
+  </div>
+</section>
+
+<div class="divider" style="max-width:1200px;margin:0 auto;"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Work</div>
+  <h2>Featured Projects</h2>
+  <div class="projects-grid">
+
+    <div class="project-card fade-up">
+      <div class="project-img">📚</div>
+      <div class="project-body">
+        <div class="project-stack">
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">HTML/CSS</span>
+          <span class="stack-tag">JavaScript</span>
+          <span class="stack-tag">Bootstrap</span>
+        </div>
+        <h3>Library Visitor Management</h3>
+        <p>A full-featured digital platform that replaces manual visitor registers in libraries. Supports entry/exit logging, digital resource access, member management and report generation.</p>
+        <div class="project-links">
+          <a href="https://github.com/Singhaniket2110" target="_blank" class="proj-link primary">GitHub →</a>
+          <a href="#" class="proj-link">Case Study</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card fade-up">
+      <div class="project-img">✈️</div>
+      <div class="project-body">
+        <div class="project-stack">
+          <span class="stack-tag">PHP</span>
+          <span class="stack-tag">MySQL</span>
+          <span class="stack-tag">HTML/CSS</span>
+          <span class="stack-tag">Bootstrap</span>
+        </div>
+        <h3>Flight Management System</h3>
+        <p>A comprehensive flight booking and passenger management system built with PHP and MySQL. Features flight search, seat booking, cancellations, and an admin dashboard for airline management.</p>
+        <div class="project-links">
+          <a href="https://github.com/Singhaniket2110" target="_blank" class="proj-link primary">GitHub →</a>
+          <a href="#" class="proj-link">Case Study</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card fade-up">
+      <div class="project-img">🛒</div>
+      <div class="project-body">
+        <div class="project-stack">
+          <span class="stack-tag">MERN</span>
+          <span class="stack-tag">MongoDB</span>
+          <span class="stack-tag">Node.js</span>
+          <span class="stack-tag">React</span>
+        </div>
+        <h3>E-Commerce Web App</h3>
+        <p>A full-stack MERN e-commerce platform with product listing, cart management, user authentication and order tracking. Clean UI with responsive design for all devices.</p>
+        <div class="project-links">
+          <a href="https://github.com/Singhaniket2110" target="_blank" class="proj-link primary">GitHub →</a>
+          <a href="#" class="proj-link">Live Demo</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider" style="max-width:1200px;margin:0 auto;"></div>
+
+<!-- BSCIT HELP -->
+<section id="academic">
+  <div class="section-label">Academic Help</div>
+  <h2>BSc IT Project Assistance</h2>
+  <p style="color:var(--muted);font-size:16px;max-width:600px;margin-bottom:48px;line-height:1.8;">Final year project stressing you out? I help BSc IT students across Mumbai complete their projects — from idea to viva.</p>
+  <div class="bscit-grid fade-up">
+    <div class="bscit-card">
+      <div class="bscit-icon">💻</div>
+      <h3>Ready-Made Projects</h3>
+      <p>Pre-built projects in Python, PHP and MERN stack — ready to submit and defend.</p>
+    </div>
+    <div class="bscit-card">
+      <div class="bscit-icon">📝</div>
+      <h3>Project Proposal</h3>
+      <p>Well-structured proposals with problem statement, objectives and methodology.</p>
+    </div>
+    <div class="bscit-card">
+      <div class="bscit-icon">📄</div>
+      <h3>SRS Documentation</h3>
+      <p>Complete Software Requirements Specification as per IEEE standards.</p>
+    </div>
+    <div class="bscit-card">
+      <div class="bscit-icon">📖</div>
+      <h3>Project Dissertation</h3>
+      <p>Full dissertation/report writing with diagrams, code explanation and references.</p>
+    </div>
+    <div class="bscit-card">
+      <div class="bscit-icon">🎓</div>
+      <h3>Viva Guidance</h3>
+      <p>Mock viva sessions and Q&A prep so you walk in confident on exam day.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider" style="max-width:1200px;margin:0 auto;"></div>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-label">Pricing</div>
+  <h2>Service Packages</h2>
+  <div class="pricing-grid fade-up">
+    <div class="price-card">
+      <div class="price-type">Website</div>
+      <div class="price-amount">₹2K–5K</div>
+      <div class="price-range">Basic to professional websites</div>
+      <ul class="price-features">
+        <li>Responsive Design</li>
+        <li>HTML/CSS/JS</li>
+        <li>Contact Form</li>
+        <li>Up to 5 Pages</li>
+        <li>Free Deployment Help</li>
+      </ul>
+      <a href="#contact" class="btn-secondary" style="display:block;text-align:center;">Get Started</a>
+    </div>
+    <div class="price-card featured">
+      <div class="price-type">Web App</div>
+      <div class="price-amount">₹5K–15K</div>
+      <div class="price-range">Full stack web applications</div>
+      <ul class="price-features">
+        <li>Python / PHP / MERN</li>
+        <li>Database Integration</li>
+        <li>User Authentication</li>
+        <li>Admin Dashboard</li>
+        <li>Full Source Code</li>
+      </ul>
+      <a href="#contact" class="btn-primary" style="display:block;text-align:center;">Get Started</a>
+    </div>
+    <div class="price-card">
+      <div class="price-type">BSc IT Project</div>
+      <div class="price-amount">₹3K–8K</div>
+      <div class="price-range">Complete academic project help</div>
+      <ul class="price-features">
+        <li>Working Project</li>
+        <li>SRS Document</li>
+        <li>Dissertation/Report</li>
+        <li>Presentation Help</li>
+        <li>Viva Preparation</li>
+      </ul>
+      <a href="#contact" class="btn-secondary" style="display:block;text-align:center;">Get Started</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider" style="max-width:1200px;margin:0 auto;"></div>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="section-label">Reviews</div>
+  <h2>What Clients Say</h2>
+  <div class="testi-grid fade-up">
+    <div class="testi-card">
+      <div class="testi-quote">"</div>
+      <div class="testi-text">Very helpful for my BSc IT final year project. Delivered everything on time — the SRS, code, and even helped me prepare for the viva. Got an A grade!</div>
+      <div class="testi-author">Priya M.</div>
+      <div class="testi-role">BSc IT Final Year, Mumbai University</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-quote">"</div>
+      <div class="testi-text">Professional website development at a very reasonable price. Aniket understood my requirements quickly and built exactly what I needed for my startup.</div>
+      <div class="testi-author">Ravi K.</div>
+      <div class="testi-role">Small Business Owner</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-quote">"</div>
+      <div class="testi-text">Built our inventory web app using Python and MySQL. Clean code, good communication and delivered ahead of schedule. Will definitely work again.</div>
+      <div class="testi-author">Sneha P.</div>
+      <div class="testi-role">Freelance Client</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider" style="max-width:1200px;margin:0 auto;"></div>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="section-label">Articles</div>
+  <h2>Developer Blog</h2>
+  <div class="blog-grid fade-up">
+    <div class="blog-card">
+      <span class="blog-tag">GUIDE</span>
+      <h3>How to Build a BSc IT Final Year Project Step by Step</h3>
+      <p>A complete walkthrough from choosing your project idea to writing your SRS and submitting your dissertation.</p>
+      <span class="blog-read">Read Article →</span>
+    </div>
+    <div class="blog-card">
+      <span class="blog-tag">TUTORIAL</span>
+      <h3>How to Write a Great SRS Document for Your College Project</h3>
+      <p>Learn the IEEE standard structure, what sections you need, and common mistakes students make.</p>
+      <span class="blog-read">Read Article →</span>
+    </div>
+    <div class="blog-card">
+      <span class="blog-tag">DEVOPS</span>
+      <h3>Deploy Your Website for Free in Under 10 Minutes</h3>
+      <p>Using GitHub Pages, Vercel and Render — get your project live with a real URL before your submission deadline.</p>
+      <span class="blog-read">Read Article →</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider" style="max-width:1200px;margin:0 auto;"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Contact</div>
+  <h2>Let's Work Together</h2>
+  <div class="contact-wrap">
+    <div class="contact-info fade-up">
+      <h3>Got a project in mind?</h3>
+      <p>Whether it's a full web app, a BSc IT project, or just a landing page — drop me a message and I'll get back to you within a few hours.</p>
+      <div class="contact-links">
+        <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="contact-link">
+          <div class="contact-link-icon">💬</div>
+          <div class="contact-link-text">
+            <small>WhatsApp</small>
+            <strong>+91 XXXXXXXXXX</strong>
+          </div>
+        </a>
+        <a href="mailto:aniket@email.com" class="contact-link">
+          <div class="contact-link-icon">✉️</div>
+          <div class="contact-link-text">
+            <small>Email</small>
+            <strong>aniket@email.com</strong>
+          </div>
+        </a>
+        <a href="https://github.com/Singhaniket2110" target="_blank" class="contact-link">
+          <div class="contact-link-icon">🐙</div>
+          <div class="contact-link-text">
+            <small>GitHub</small>
+            <strong>Singhaniket2110</strong>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <form class="fade-up" id="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" placeholder="Your full name" required>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="your@email.com" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Service Needed</label>
+        <select>
+          <option value="">Select a service...</option>
+          <option>Website Development</option>
+          <option>Web App Development</option>
+          <option>BSc IT Project Help</option>
+          <option>SRS Documentation</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Project Details</label>
+        <textarea placeholder="Describe your project, deadline, and budget..."></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="width:100%;border:none;font-size:14px;">Send Message →</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">aniket.dev</div>
+  <p>© 2026 Aniket Singh · Mumbai, India</p>
+  <p style="font-size:12px;color:var(--muted);">Built with ❤️ &amp; lots of coffee</p>
+</footer>
+
+<!-- WHATSAPP FAB -->
+<a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="whatsapp" title="Chat on WhatsApp">💬</a>
+
+<script>
+/* ---- HAMBURGER ---- */
+const hamburger = document.getElementById('hamburger');
+const nav = document.getElementById('main-nav');
+hamburger.addEventListener('click', () => nav.classList.toggle('open'));
+
+/* ---- TYPING EFFECT ---- */
+const words = ['Full Stack Developer', 'MERN Stack Developer', 'Python Developer', 'PHP Developer', 'BSc IT Project Guide'];
+let wIdx = 0, cIdx = 0, deleting = false;
+const typingEl = document.getElementById('typing-text');
+
+function type() {
+  const word = words[wIdx];
+  if (!deleting) {
+    typingEl.textContent = word.substring(0, ++cIdx);
+    if (cIdx === word.length) { deleting = true; setTimeout(type, 1800); return; }
+  } else {
+    typingEl.textContent = word.substring(0, --cIdx);
+    if (cIdx === 0) { deleting = false; wIdx = (wIdx + 1) % words.length; }
+  }
+  setTimeout(type, deleting ? 60 : 90);
+}
+type();
+
+/* ---- PARTICLES ---- */
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+const NUM = 80;
+const pts = Array.from({length: NUM}, () => ({
+  x: Math.random() * canvas.width,
+  y: Math.random() * canvas.height,
+  dx: (Math.random() - 0.5) * 0.4,
+  dy: (Math.random() - 0.5) * 0.4,
+  r: Math.random() * 1.5 + 0.5
+}));
+
+let mouse = {x: null, y: null};
+window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+
+function drawParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  pts.forEach((p, i) => {
+    p.x += p.dx; p.y += p.dy;
+    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(0,229,255,0.4)';
+    ctx.fill();
+
+    // Connect nearby particles
+    for (let j = i + 1; j < NUM; j++) {
+      const dx = pts[j].x - p.x, dy = pts[j].y - p.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 120) {
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(pts[j].x, pts[j].y);
+        ctx.strokeStyle = `rgba(0,229,255,${0.06 * (1 - dist / 120)})`;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+    }
+  });
+  requestAnimationFrame(drawParticles);
+}
+drawParticles();
+
+/* ---- SCROLL ANIMATIONS ---- */
+const fadeEls = document.querySelectorAll('.fade-up');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.1 });
+fadeEls.forEach(el => observer.observe(el));
+
+/* ---- HEADER SCROLL ---- */
+window.addEventListener('scroll', () => {
+  const h = document.querySelector('header');
+  h.style.background = window.scrollY > 50
+    ? 'rgba(6,10,18,0.95)' : 'rgba(6,10,18,0.7)';
+});
+
+/* ---- FORM SUBMIT ---- */
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('button[type="submit"]');
+  btn.textContent = 'Message Sent! ✓';
+  btn.style.background = '#10b981';
+  setTimeout(() => {
+    btn.textContent = 'Send Message →';
+    btn.style.background = '';
+    this.reset();
+  }, 3000);
+});
+</script>
+</body>
+</html>
